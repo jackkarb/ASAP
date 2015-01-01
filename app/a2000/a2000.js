@@ -60,7 +60,7 @@ angular.module('asapApp.a2000', ['ngRoute'])
             //$scope.data.voltage[$scope.select_voltage].selected = true;
             console.log(dataSelect);
             /*
-             $http.put('http://localhost:8080/asap/a2000/12').
+             $http.post('http://localhost:8080/asap/a2000/12').
              success(function(data, status, headers, config) {
              $scope.data = data;
              }).
