@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="asapApp">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Leviton ASAP</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="bower_components/angular-bootstrap/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="bower_components/angular-bootstrap/dashboard.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]>
+    <script src="../../assets/js/ie8-responsive-file-warning.js"></script>
+    <![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+    <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container-fluid-nav">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Leviton ASAP</a>
+        </div>
+
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="#">Projects</a></li>
+                <li><a href="#">Profiles</a></li>
+                <!--li><a href="#">Help</a></li-->
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Resources<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+             </ul>
+            <form class="navbar-form navbar-right">
+                <input type="text" class="form-control" placeholder="Search...">
+            </form>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <ul class="nav nav-sidebar">
+                <li class="active"><a href="home.html">Dimming Systems</a></li>
+
+            </ul>
+        </div>
+        <!--
+              <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                  <h2 class="page-header">Modules</h2>
+                  <form class="form-horizontal" role="form">
+                      <div class="form-group">
+                          <label for="panelSize" class="col-sm-2 control-label">Panel Size</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" id="panelSize" placeholder="Panel Size" ng-model="data.panelSize">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="label" class="col-sm-2 control-label">Device Label</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" id="label" placeholder="Device Label" ng-model="data.label">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="location" class="col-sm-2 control-label">Location</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" id="location" placeholder="Location" ng-model="data.location">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="feederCKT" class="col-sm-2 control-label">Feeder CKT</label>
+                          <div class="col-sm-10">
+                              <input type="text" class="form-control" id="feederCKT" placeholder="Feeder CKT" ng-model="data.feederCKT">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="voltage" class="col-sm-2 control-label">Voltage</label>
+                          <div class="col-sm-10">
+
+                              <select class="form-control" id="voltage" ng-model="select_voltage" ng-change="submitAll()">
+                                  <option ng-repeat="v in data.voltage" ng-selected="v.selected" ng-show="v.valid" value="{{v.displayName}}">
+                                      {{v.displayName}}
+                                  </option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="mounting" class="col-sm-2 control-label">Mounting</label>
+
+                          <div class="col-sm-10">
+                              <select class="form-control" id="mounting" ng-model="select_mounting">
+                                  <option ng-repeat="m in data.mounting" ng-selected="m.selected" value="{{m.displayName}}">
+                                      {{m.displayName}}
+                                  </option>
+                              </select>
+                          </div>
+                      </div>
+                      <h3 class="sub-header">Panel Breaker Info</h3>
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label">Add Main Breaker?</label>
+                          <div class="col-sm-10">
+                              <input type="checkbox" id="mainBreaker" ng-model="data.mainBreaker">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="breakerSize" class="col-sm-2 control-label">Breaker Size</label>
+                          <div class="col-sm-10">
+                              <select class="form-control" id="breakerSize" ng-model="select_breakerSize">
+                                  <option ng-repeat="b in data.breakerSize" ng-selected="b.selected" ng-show="b.valid" value="{{b.displayName}}">
+                                      {{b.displayName}}
+                                  </option>
+                              </select>
+                          </div>
+                      </div>
+                      <h3 class="sub-header">Relay Panel Info</h3>
+                      <div class="form-group">
+                          <label class="col-sm-2 control-label">Relay Panel Required?</label>
+                          <div class="col-sm-10">
+                              <input type="checkbox" id="panelRequired" ng-model="data.panelRequired">
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="feederType" class="col-sm-2 control-label">Feeder Type</label>
+                          <div class="col-sm-10">
+                              <select class="form-control" id="feederType" ng-model="select_feederType">
+                                  <option ng-repeat="f in data.feederType" ng-selected="f.selected" value="{{f.displayName}}">
+                                      {{f.displayName}}
+                                  </option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="relayVoltage" class="col-sm-2 control-label">Relay Voltage</label>
+                          <div class="col-sm-10">
+                              <select class="form-control" id="relayVoltage" ng-model="select_relayVoltage">
+                                  <option ng-repeat="r in data.relayVoltage" ng-selected="r.selected" value="{{r.displayName}}">
+                                      {{r.displayName}}
+                                  </option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="form-group">
+                          <label for="relayQuantity" class="col-sm-2 control-label">Relay Qty</label>
+                          <div class="col-sm-10">
+                              <input type="number" id="relayQuantity" ng-model="data.relayQuantity" min="0" max="12" step="2">
+
+                          </div>
+                      </div>
+                      <h3 class="sub-header">DMX Jacks</h3>
+                      <div class="form-group">
+                          <label for="dmxjacks" class="col-sm-2 control-label">DMX 512 Jacks</label>
+                          <div class="col-sm-10">
+                              <input type="number" id="dmxjacks" ng-model="data.dmxjacks" min="0" max="2">
+                          </div>
+                      </div>
+                      <!--
+                      <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                          <button type="submit" class="btn btn-default">Sign in</button>
+                        </div>
+                      </div>
+
+                  </form>
+
+
+                            <h2 class="sub-header">Section title</h2>
+                  -->
+
+        </div>
+</div>
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="bower_components/angular-bootstrap/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="asapApp.js"></script>
+<script src="a2000/a2000.js"></script>
+<script src="../../assets/js/docs.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>

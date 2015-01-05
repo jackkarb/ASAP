@@ -7,6 +7,7 @@ var asapApp = angular.module('asapApp', [
 ])
 
     .config(['$routeProvider', function($routeProvider) {
+
         $routeProvider.otherwise({redirectTo: '/a2000'});
     }]);
 /*
